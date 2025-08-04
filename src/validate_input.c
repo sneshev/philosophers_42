@@ -1,7 +1,7 @@
 #include "philosophers.h"
 
 
-ft_strlen(char *str)
+size_t  ft_strlen(char *str)
 {
     size_t  i;
 
@@ -51,6 +51,8 @@ bool    is_positive_int(char *str)
     while (*str == '0')
         str++;
     i = 0;
+    if (*str > '2')
+        return (false);
     while (int_max[i] && str[i] == int_max[i])
     {
         i++;
@@ -61,7 +63,7 @@ bool    is_positive_int(char *str)
         i++;
     if (str[i])
         return (false);
-
+    return (true);
 }
 
 bool    is_valid_input(int argc, char *argv[])
@@ -70,5 +72,13 @@ bool    is_valid_input(int argc, char *argv[])
         return (explain_message(), false);
     if (!is_positive_int(argv[1]))
         return (positive_int_message("number of philosophers"), false);
+    if (!is_positive_int(argv[2]))
+        return (positive_int_message("time to die"), false);
+    if (!is_positive_int(argv[3]))
+        return (positive_int_message("time to eat"), false);
+    if (!is_positive_int(argv[4]))
+        return (positive_int_message("time to sleep"), false);
+    if (argc == 6 && !is_positive_int(argv[5]))
+        return (positive_int_message("number of meals"), false);
     return (true);
 }

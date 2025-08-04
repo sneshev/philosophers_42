@@ -9,6 +9,7 @@
 
 
 
+bool    is_valid_input(int argc, char *argv[]);
 
 
 #endif
