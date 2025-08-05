@@ -39,30 +39,45 @@ int ft_isdigit(int c)
         return (2048);
 }
 
+bool    is_number(char *str)
+{
+    while (*str == '+')
+        str++;
+    if (!*str)
+        return (false);
+    while (*str)
+    {
+        if (!ft_isdigit(*str))
+            return (false);
+        str++;
+    }
+    return (true);
+}
+
 bool    is_positive_int(char *str)
 {
     const char  *int_max = "2147483647";
     int         i;
 
+    if (!is_number(str))
+        return (false);
     while (*str == '+')
         str++;
-    if (!*str)
-        return (false);
     while (*str == '0')
         str++;
+    if (ft_strlen(str) < 10)
+        return (true);
+    else if (ft_strlen(str) > 10)
+        return (false);
     i = 0;
     if (*str > '2')
         return (false);
-    while (int_max[i] && str[i] == int_max[i])
+    while(str[i] == int_max[i])
     {
         i++;
         if (str[i] > int_max[i])
             return (false);
     }
-    while (str[i] && int_max[i] && ft_isdigit(str[i]))
-        i++;
-    if (str[i])
-        return (false);
     return (true);
 }
 
