@@ -21,7 +21,16 @@ long    get_elapsed_ms(struct timeval start, struct timeval curr)
 
 void    print_elapsed_ms(struct timeval start, struct timeval curr)
 {
-    printf("%lu", get_elapsed_ms(start, curr));
+    long    millisecs;
+
+    millisecs = get_elapsed_ms(start, curr);
+    if (millisecs < 1000)
+        printf("0");
+    if (millisecs < 100)
+        printf("0");
+    if (millisecs < 10)
+        printf("0");
+    printf("%lu", millisecs);
 }
 
 int get_start_time(t_dinner *dinner)

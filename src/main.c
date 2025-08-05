@@ -24,10 +24,20 @@ int main(int argc, char *argv[])
     if (prepare_dinner(&dinner) == -1)
         return (1);
 
-    sleep(2);
-    usleep(1030000);
+    // sleep(2);
+    usleep(3000);
     get_curr_time(&dinner);
     print_elapsed_ms(dinner.time_start, dinner.time_now);
+    printf("\n");
+
+    usleep(30000);
+    get_curr_time(&dinner);
+    print_elapsed_ms(dinner.time_start, dinner.time_now);
+    printf("\n");
+    usleep(1010100);
+    get_curr_time(&dinner);
+    print_elapsed_ms(dinner.time_start, dinner.time_now);
+    printf("\n");
 
     printf("ez\n");
 }
