@@ -8,6 +8,9 @@
 # include <sys/time.h>
 # include <pthread.h>
  
+int     ft_gettime(struct timeval *tv);
+long    get_elapsed_ms(struct timeval start, struct timeval curr);
+void    print_elapsed_ms(struct timeval start, struct timeval curr);
 
 
 bool    is_valid_input(int argc, char *argv[]);
@@ -29,7 +32,8 @@ typedef struct
 
 typedef struct
 {
-    struct timeval  time;
+    struct timeval  time_start;
+    struct timeval  time_now;
 } t_dinner_info;
 
 

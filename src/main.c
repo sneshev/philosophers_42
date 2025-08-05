@@ -1,9 +1,9 @@
 #include "philosophers.h"
 
-
 int prepare_dinner(t_dinner_info *dinner_info)
 {
-    gettimeofday(&(dinner_info->time), NULL);
+    if (ft_gettime(&(dinner_info->time_start)) < 0)
+        return (-1);
 
     return (1);
 }
@@ -22,8 +22,11 @@ int main(int argc, char *argv[])
 
     if (!is_valid_input(argc, argv))
         return (1);
-    if (!prepare_dinner(&dinner_info))
+    if (prepare_dinner(&dinner_info) == -1)
         return (1);
-
-    write(1, "ez\n", 3);
+    sleep(1);
+    usleep(10000);
+    ft_gettime(&(dinner_info.time_now));
+    print_elapsed_ms(dinner_info.time_start, dinner_info.time_now);
+    printf("ez\n");
 }
