@@ -3,7 +3,7 @@
 
 int prepare_dinner(t_dinner_info *dinner_info)
 {
-    // gettimeofday(&(dinner_info->time), NULL);
+    gettimeofday(&(dinner_info->time), NULL);
 
     return (1);
 }
