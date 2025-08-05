@@ -24,7 +24,12 @@ void    print_elapsed_ms(struct timeval start, struct timeval curr)
     printf("%lu", get_elapsed_ms(start, curr));
 }
 
-int ft_gettime(struct timeval *tv)
+int get_start_time(t_dinner *dinner)
 {
-    return (gettimeofday(tv, NULL));
+    return (gettimeofday(&(dinner->time_start), NULL));
+}
+
+int get_curr_time(t_dinner *dinner)
+{
+    return (gettimeofday(&(dinner->time_now), NULL));
 }

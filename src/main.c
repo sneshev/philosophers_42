@@ -1,17 +1,16 @@
 #include "philosophers.h"
 
-int prepare_dinner(t_dinner_info *dinner_info)
+int prepare_dinner(t_dinner *dinner)
 {
-    if (ft_gettime(&(dinner_info->time_start)) < 0)
+    if (get_start_time(dinner) < 0)
         return (-1);
-
     return (1);
 }
 
 // int main()
 int main(int argc, char *argv[])
 {
-    t_dinner_info   dinner_info;
+    t_dinner   dinner;
     // int argc = 5;
     // char *argv[argc];
     // argv[0] = "./philosophers";
@@ -22,11 +21,13 @@ int main(int argc, char *argv[])
 
     if (!is_valid_input(argc, argv))
         return (1);
-    if (prepare_dinner(&dinner_info) == -1)
+    if (prepare_dinner(&dinner) == -1)
         return (1);
-    sleep(1);
-    usleep(10000);
-    ft_gettime(&(dinner_info.time_now));
-    print_elapsed_ms(dinner_info.time_start, dinner_info.time_now);
+
+    sleep(2);
+    usleep(1030000);
+    get_curr_time(&dinner);
+    print_elapsed_ms(dinner.time_start, dinner.time_now);
+
     printf("ez\n");
 }

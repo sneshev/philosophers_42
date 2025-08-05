@@ -7,11 +7,6 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <pthread.h>
- 
-int     ft_gettime(struct timeval *tv);
-long    get_elapsed_ms(struct timeval start, struct timeval curr);
-void    print_elapsed_ms(struct timeval start, struct timeval curr);
-
 
 bool    is_valid_input(int argc, char *argv[]);
 
@@ -34,7 +29,13 @@ typedef struct
 {
     struct timeval  time_start;
     struct timeval  time_now;
-} t_dinner_info;
+} t_dinner;
+
+
+int     get_start_time(t_dinner *dinner);
+int     get_curr_time(t_dinner *dinner);
+long    get_elapsed_ms(struct timeval start, struct timeval curr);
+void    print_elapsed_ms(struct timeval start, struct timeval curr);
 
 
 #endif
