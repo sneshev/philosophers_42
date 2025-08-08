@@ -2,7 +2,8 @@
 
 int prepare_dinner(t_dinner *dinner)
 {
-    if (get_start_time(dinner) < 0)
+    dinner->time_start = ft_gettime();
+    if (dinner->time_start == -1)
         return (-1);
     return (1);
 }
@@ -23,21 +24,8 @@ int main(int argc, char *argv[])
         return (1);
     if (prepare_dinner(&dinner) == -1)
         return (1);
-
-    // sleep(2);
-    usleep(3000);
-    get_curr_time(&dinner);
-    print_elapsed_ms(dinner.time_start, dinner.time_now);
-    printf("\n");
-
-    usleep(30000);
-    get_curr_time(&dinner);
-    print_elapsed_ms(dinner.time_start, dinner.time_now);
-    printf("\n");
-    usleep(1010100);
-    get_curr_time(&dinner);
-    print_elapsed_ms(dinner.time_start, dinner.time_now);
-    printf("\n");
-
+    usleep(1500);
+    dinner.time_now = ft_gettime();
+    print_elapsed_ms(dinner);
     printf("ez\n");
 }

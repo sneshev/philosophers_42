@@ -1,44 +1,30 @@
 #include "philosophers.h"
 
 // elapsed time in milliseconds
-long    get_elapsed_ms(struct timeval start, struct timeval curr)
+long    get_elapsed_ms(t_dinner dinner)
 {
-    long    secs;
-    long    millisecs;
-    long    microsecs;
-
-    secs = curr.tv_sec - start.tv_sec;
-    microsecs = curr.tv_usec - start.tv_usec;
-    if (microsecs < 0)
-    {
-        secs -= 1;
-        microsecs += 1000000;
-    }
-    millisecs = secs * 1000;
-    millisecs += microsecs / 1000;
-    return (millisecs);
+    return (dinner.time_now - dinner.time_start);
 }
 
-void    print_elapsed_ms(struct timeval start, struct timeval curr)
+void    print_elapsed_ms(t_dinner dinner)
 {
-    long    millisecs;
+    long    ms;
 
-    millisecs = get_elapsed_ms(start, curr);
-    if (millisecs < 1000)
+    ms = get_elapsed_ms(dinner);
+    if (ms < 1000)
         printf("0");
-    if (millisecs < 100)
+    if (ms < 100)
         printf("0");
-    if (millisecs < 10)
+    if (ms < 10)
         printf("0");
-    printf("%lu", millisecs);
+    printf("%lu", ms);
 }
 
-int get_start_time(t_dinner *dinner)
+long    ft_gettime(void)
 {
-    return (gettimeofday(&(dinner->time_start), NULL));
-}
+    struct timeval  tv;
 
-int get_curr_time(t_dinner *dinner)
-{
-    return (gettimeofday(&(dinner->time_now), NULL));
+    if (gettimeofday(&tv, NULL) == -1)
+        return (-1);
+    return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }

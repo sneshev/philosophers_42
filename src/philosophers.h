@@ -27,15 +27,13 @@ typedef struct
 
 typedef struct
 {
-    struct timeval  time_start;
-    struct timeval  time_now;
+    long    time_start;
+    long    time_now;
 } t_dinner;
 
 
-int     get_start_time(t_dinner *dinner);
-int     get_curr_time(t_dinner *dinner);
-long    get_elapsed_ms(struct timeval start, struct timeval curr);
-void    print_elapsed_ms(struct timeval start, struct timeval curr);
-
+long    ft_gettime(void);
+void    print_elapsed_ms(t_dinner dinner);
+long    get_elapsed_ms(t_dinner dinner);
 
 #endif
