@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         return (1);
     if (prepare_dinner(&dinner) == -1)
         return (1);
-    usleep(1500);
+    usleep(1600);
     dinner.time_now = ft_gettime();
     print_elapsed_ms(dinner);
     printf("ez\n");
