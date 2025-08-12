@@ -31,7 +31,6 @@ typedef struct s_config
 typedef struct s_dinner
 {
 	t_config	config;
-	long		time_start;
 }	t_dinner;
 
 #endif

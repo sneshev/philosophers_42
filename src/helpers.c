@@ -2,8 +2,10 @@
 
 void	print_dinner(t_dinner dinner)
 {
-	printf("start time: %lu\n", dinner.time_start);
-	printf("elapsed time: %lu\n", ft_gettime() - dinner.time_start);
+	printf("I N F O:\n");
+	printf("elapsed time: ");
+	print_elapsed_ms();
+	printf(" ms\n");
 	printf("\nconfig:\n");
 	printf("philos count: %i\n", dinner.config.philos_count);
 	printf("time to die: %i\n", dinner.config.time_to_die);

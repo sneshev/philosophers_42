@@ -12,8 +12,8 @@ bool	is_valid_input(int argc, char *argv[]);
 
 // time
 long	ft_gettime(void);
-long	get_elapsed_ms(t_dinner dinner);
-void	print_elapsed_ms(t_dinner dinner);
+long	get_elapsed_ms(void);
+void	print_elapsed_ms(void);
 
 // utils
 int		ft_atoi(const char *nptr);

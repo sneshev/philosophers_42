@@ -2,8 +2,7 @@
 
 int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 {
-	dinner->time_start = ft_gettime();
-	if (dinner->time_start == -1)
+	if (get_elapsed_ms() == -1)
 		return (-1);
 	dinner->config.philos_count = ft_atoi(argv[1]);
 	dinner->config.time_to_die = ft_atoi(argv[2]);
@@ -33,6 +32,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (prepare_dinner(&dinner, argc, argv) == -1)
 		return (1);
+	usleep(13000);
 	print_dinner(dinner);
 	printf("ez\n");
 }
