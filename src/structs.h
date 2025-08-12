@@ -12,6 +12,13 @@ typedef enum s_state
 	DEAD
 }	e_state;
 
+typedef enum s_time
+{
+	SEC,
+	MILLISEC,
+	MICROSEC
+}	e_time;
+
 typedef struct s_philosopher
 {
 	size_t  index;

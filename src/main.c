@@ -32,7 +32,9 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (prepare_dinner(&dinner, argc, argv) == -1)
 		return (1);
-	usleep(13000);
+	ft_sleep(1, SEC);
+	ft_sleep(1, MILLISEC);
+	ft_sleep(11000, MICROSEC);
 	print_dinner(dinner);
 	printf("ez\n");
 }

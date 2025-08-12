@@ -48,3 +48,15 @@ void	print_elapsed_ms(void)
 	printf("%lu", ms);
 }
 
+void	ft_sleep(long time_to_sleep, e_time type)
+{
+	long	start;
+
+	if (type == MICROSEC)
+		time_to_sleep /= 1000;
+	if (type == SEC)
+		time_to_sleep *= 1000;
+	start = ft_gettime();
+	while (ft_gettime() - start < time_to_sleep)
+		usleep(500);
+}
