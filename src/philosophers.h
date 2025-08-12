@@ -11,7 +11,6 @@
 bool	is_valid_input(int argc, char *argv[]);
 
 // time
-long	ft_gettime(void);
 long	get_elapsed_ms(void);
 void	print_elapsed_ms(void);
 
