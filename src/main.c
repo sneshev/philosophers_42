@@ -1,31 +1,38 @@
 #include "philosophers.h"
 
-int prepare_dinner(t_dinner *dinner)
+int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 {
-    dinner->time_start = ft_gettime();
-    if (dinner->time_start == -1)
-        return (-1);
-    return (1);
+	dinner->time_start = ft_gettime();
+	if (dinner->time_start == -1)
+		return (-1);
+	dinner->config.philos_count = ft_atoi(argv[1]);
+	dinner->config.time_to_die = ft_atoi(argv[2]);
+	dinner->config.time_to_eat = ft_atoi(argv[3]);
+	dinner->config.time_to_sleep = ft_atoi(argv[4]);
+	if (argc == 6)
+		dinner->config.max_meals = ft_atoi(argv[5]);
+	else
+		dinner->config.max_meals = -1;
+	return (1);
 }
 
 // int main()
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    t_dinner   dinner;
-    // int argc = 5;
-    // char *argv[argc];
-    // argv[0] = "./philosophers";
-    // argv[1] = "1234567890";
-    // argv[2] = "2148000000";
-    // argv[3] = "21";
-    // argv[4] = "212320";
+	t_dinner	dinner;
+	// int argc = 6;
+	// char *argv[argc];
+	// argv[0] = "./philosophers";
+	// argv[1] = "1";
+	// argv[2] = "2";
+	// argv[3] = "3";
+	// argv[4] = "4";
+	// argv[5] = "5";
 
-    if (!is_valid_input(argc, argv))
-        return (1);
-    if (prepare_dinner(&dinner) == -1)
-        return (1);
-    usleep(1600);
-    dinner.time_now = ft_gettime();
-    print_elapsed_ms(dinner);
-    printf("ez\n");
+	if (!is_valid_input(argc, argv))
+		return (1);
+	if (prepare_dinner(&dinner, argc, argv) == -1)
+		return (1);
+	print_dinner(dinner);
+	printf("ez\n");
 }
