@@ -4,11 +4,15 @@
 # include "structs.h"
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <stdbool.h>
 # include <sys/time.h>
-# include <pthread.h>
 
 bool	is_valid_input(int argc, char *argv[]);
+
+// forks
+int		create_forks(pthread_mutex_t **forks_ptr, int amount);
+void	destroy_forks(pthread_mutex_t *forks, int amount);
 
 // time
 long	get_elapsed_ms(void);

@@ -3,21 +3,17 @@
 
 # include <stdbool.h>
 # include <unistd.h>
+# include <pthread.h>
+
+# define LEFT 0
+# define RIGHT 1
 
 typedef enum s_state
-{
-	THINKING,
-	EATING,
-	SLEEPING,
-	FINISHED
-}	e_state;
-
-typedef enum s_condition
 {
 	ALIVE,
 	DONE,
 	DEAD
-}	e_condition;
+}	e_state;
 
 typedef enum s_time
 {
@@ -28,9 +24,11 @@ typedef enum s_time
 
 typedef struct s_philosopher
 {
-	size_t  	index;
-	e_state 	state;
-	e_condition	condition;
+	size_t  		index;
+	e_state 		state;
+	pthread_mutex_t	*fork[2];
+	long			meal_last;
+	int				meals_eaten;
 
 }	t_philosopher;
 

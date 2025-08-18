@@ -19,6 +19,7 @@ int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_dinner	dinner;
+	pthread_mutex_t	*forks;
 	// int argc = 6;
 	// char *argv[argc];
 	// argv[0] = "./philosophers";
@@ -32,9 +33,12 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (prepare_dinner(&dinner, argc, argv) == -1)
 		return (1);
-
-	ft_sleep(1, MILLISEC);
-
+	if (create_forks(&forks, dinner.config.philos_count) == -1)
+		return (1); // dont have to free_dinner() yet
+	
+	ft_sleep(43, MILLISEC);
 	print_dinner(dinner);
 	printf("ez\n");
+
+	destroy_forks(forks, dinner.config.philos_count);
 }
