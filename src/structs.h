@@ -9,8 +9,15 @@ typedef enum s_state
 	THINKING,
 	EATING,
 	SLEEPING,
-	DEAD
+	FINISHED
 }	e_state;
+
+typedef enum s_condition
+{
+	ALIVE,
+	DONE,
+	DEAD
+}	e_condition;
 
 typedef enum s_time
 {
@@ -21,8 +28,9 @@ typedef enum s_time
 
 typedef struct s_philosopher
 {
-	size_t  index;
-	e_state state;
+	size_t  	index;
+	e_state 	state;
+	e_condition	condition;
 
 }	t_philosopher;
 
