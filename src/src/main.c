@@ -1,8 +1,10 @@
 #include "philosophers.h"
 
+// init dinner struct and static var function
 int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 {
-	if (get_elapsed_ms() == -1)
+	dinner->config.start_ms = get_elapsed_ms();
+	if (dinner->config.start_ms == -1)
 		return (-1);
 	dinner->config.philos_count = ft_atoi(argv[1]);
 	dinner->config.time_to_die = ft_atoi(argv[2]);
@@ -18,8 +20,10 @@ int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 // int main()
 int	main(int argc, char *argv[])
 {
-	t_dinner	dinner;
 	pthread_mutex_t	*forks;
+	t_philosopher	*philos;
+	t_dinner		dinner;
+	t_config		config;
 	// int argc = 6;
 	// char *argv[argc];
 	// argv[0] = "./philosophers";
@@ -33,12 +37,18 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (prepare_dinner(&dinner, argc, argv) == -1)
 		return (1);
-	if (create_forks(&forks, dinner.config.philos_count) == -1)
+	config = dinner.config;
+	if (create_forks(&forks, config.philos_count) == -1)
 		return (1); // dont have to free_dinner() yet
-	
-	ft_sleep(43, MILLISEC);
-	print_dinner(dinner);
-	printf("ez\n");
+	if (create_philos(&philos, forks, dinner) == -1)
+		return (destroy_forks(forks, config.philos_count), 1);
+	//...
 
-	destroy_forks(forks, dinner.config.philos_count);
+	destroy_forks(forks, config.philos_count);
+	free(philos);
 }
+
+/*
+	
+
+*/

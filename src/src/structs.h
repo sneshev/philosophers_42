@@ -22,24 +22,23 @@ typedef enum s_time
 	MICROSEC
 }	e_time;
 
+typedef struct s_config
+{
+	long	start_ms;
+	int		philos_count;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		max_meals;
+}	t_config;
+
 typedef struct s_philosopher
 {
 	size_t  		index;
 	e_state 		state;
+	t_config		config;
 	pthread_mutex_t	*fork[2];
-	long			meal_last;
-	int				meals_eaten;
-
 }	t_philosopher;
-
-typedef struct s_config
-{
-	int	philos_count;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	max_meals;
-}	t_config;
 
 typedef struct s_dinner
 {

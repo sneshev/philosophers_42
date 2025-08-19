@@ -23,7 +23,7 @@ long	get_elapsed_ms(void)
 			write(2, "error getting time\n", 19);
 			return (time_start);
 		}
-		return (1);
+		return (time_start);
 	}
 	time_now = ft_gettime();
 	if (time_now == -1)

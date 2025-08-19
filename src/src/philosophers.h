@@ -14,6 +14,10 @@ bool	is_valid_input(int argc, char *argv[]);
 int		create_forks(pthread_mutex_t **forks_ptr, int amount);
 void	destroy_forks(pthread_mutex_t *forks, int amount);
 
+// philos
+int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner dinner);
+
+
 // time
 long	get_elapsed_ms(void);
 void	print_elapsed_ms(void);

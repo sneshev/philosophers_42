@@ -13,4 +13,5 @@ void	print_dinner(t_dinner dinner)
 	printf("time to sleep: %i\n", dinner.config.time_to_sleep);
 	if (dinner.config.max_meals != -1)
 		printf("max meals: %i\n", dinner.config.max_meals);
+	printf("\n\n");
 }
