@@ -27,11 +27,11 @@ int	main(int argc, char *argv[])
 	// int argc = 6;
 	// char *argv[argc];
 	// argv[0] = "./philosophers";
-	// argv[1] = "1";
-	// argv[2] = "2";
-	// argv[3] = "3";
-	// argv[4] = "4";
-	// argv[5] = "5";
+	// argv[1] = "100";
+	// argv[2] = "200";
+	// argv[3] = "60";
+	// argv[4] = "75";
+	// argv[5] = "4";
 
 	if (!is_valid_input(argc, argv))
 		return (1);
@@ -44,11 +44,12 @@ int	main(int argc, char *argv[])
 		return (destroy_forks(forks, config.philos_count), 1);
 	//...
 
+	print_philos(philos);
 	destroy_forks(forks, config.philos_count);
 	free(philos);
 }
 
 /*
-	
+	if there is one philo left fork and right fork is same
 
 */

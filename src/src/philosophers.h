@@ -28,6 +28,8 @@ int		ft_atoi(const char *nptr);
 
 // helpers
 void	print_dinner(t_dinner dinner);
+void	print_philo(t_philosopher philo);
+void	print_philos(t_philosopher *philos);
 
 
 #endif

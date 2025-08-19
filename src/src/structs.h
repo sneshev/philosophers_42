@@ -38,6 +38,8 @@ typedef struct s_philosopher
 	e_state 		state;
 	t_config		config;
 	pthread_mutex_t	*fork[2];
+	long			meal_last;
+	long			meals_eaten;
 }	t_philosopher;
 
 typedef struct s_dinner

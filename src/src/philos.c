@@ -22,6 +22,8 @@ int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner d
 		philos[i].config = dinner.config;
 		philos[i].fork[LEFT] = &forks[i];
 		philos[i].fork[RIGHT] = &forks[(i + 1) % philos_count];
+		philos[i].meal_last = config.start_ms;
+		philos[i].meals_eaten = 0;
 		printf("philo[%d] created!\n", i);
 		i++;
 	}
