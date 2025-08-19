@@ -25,7 +25,8 @@ void	print_philo(t_philosopher philo)
 	printf("meals eaten: %ld\n", philo.meals_eaten);
 	printf("\n");
 	printf("config:\n");
-	printf("max meals: %d\n", philo.config.max_meals);
+	if (philo.config.max_meals != -1)
+		printf("max meals: %d\n", philo.config.max_meals);
 	printf("start ms: %ld\n", philo.config.start_ms);
 	printf("time to die: %d\n", philo.config.time_to_die);
 	printf("time to eat: %d\n", philo.config.time_to_eat);
