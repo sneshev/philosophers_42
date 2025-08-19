@@ -50,6 +50,7 @@ int	main(int argc, char *argv[])
 }
 
 /*
-	if there is one philo left fork and right fork is same
+	.if there is one philo left fork and right fork is same
 
+	.add gitignore
 */
