@@ -49,12 +49,12 @@ int	main(int argc, char *argv[])
 	ft_sleep(619, MILLISEC);
 
 	t_philosopher philo = philos[3]; 
-	print_action(LFORK, philo.index);
-	print_action(RFORK, philo.index);
-	print_action(EAT, philo.index);
-	print_action(SLEEP, philo.index);
-	print_action(THINK, philo.index);
-	print_action(DIE, philo.index);
+	print_action(philo.index, LFORK);
+	print_action(philo.index, RFORK);
+	print_action(philo.index, EAT);
+	print_action(philo.index, SLEEP);
+	print_action(philo.index, THINK);
+	print_action(philo.index, DIE);
 
 	destroy_forks(forks, config.philos_count);
 	free(philos);

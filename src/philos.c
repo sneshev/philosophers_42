@@ -29,7 +29,7 @@ int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner d
 	return (1);
 }
 
-void	print_action(e_action act, size_t index)
+void	print_action(size_t index, e_action act)
 {
 	print_elapsed_ms();
 	printf(" %zu ", index);
