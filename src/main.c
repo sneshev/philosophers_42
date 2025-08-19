@@ -47,6 +47,7 @@ int	main(int argc, char *argv[])
 	print_philos(philos);
 	
 	ft_sleep(MILLISEC, 619);
+	sleep(1);
 
 	t_philosopher philo = philos[3]; 
 	print_action(LFORK, philo.index);
