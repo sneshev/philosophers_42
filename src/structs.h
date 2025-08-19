@@ -47,4 +47,14 @@ typedef struct s_dinner
 	t_config	config;
 }	t_dinner;
 
+typedef enum s_action
+{
+	LFORK,
+	RFORK,
+	EAT,
+	SLEEP,
+	THINK,
+	DIE
+}	e_action;
+
 #endif

@@ -9,6 +9,7 @@
 # include <sys/time.h>
 
 bool	is_valid_input(int argc, char *argv[]);
+void	print_action(e_action act, size_t index);
 
 // forks
 int		create_forks(pthread_mutex_t **forks_ptr, int amount);

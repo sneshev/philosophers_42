@@ -45,6 +45,12 @@ int	main(int argc, char *argv[])
 	//...
 
 	print_philos(philos);
+	print_action(LFORK, (size_t)14);
+	print_action(RFORK, (size_t)14);
+	print_action(EAT, (size_t)14);
+	print_action(SLEEP, (size_t)14);
+	print_action(THINK, (size_t)14);
+	print_action(DIE, (size_t)14);
 	destroy_forks(forks, config.philos_count);
 	free(philos);
 }
