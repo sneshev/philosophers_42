@@ -27,7 +27,7 @@ int	main(int argc, char *argv[])
 	// int argc = 6;
 	// char *argv[argc];
 	// argv[0] = "./philosophers";
-	// argv[1] = "100";
+	// argv[1] = "1";
 	// argv[2] = "200";
 	// argv[3] = "60";
 	// argv[4] = "75";
