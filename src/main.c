@@ -48,7 +48,7 @@ int	main(int argc, char *argv[])
 	
 	ft_sleep(619, MILLISEC);
 
-	t_philosopher philo = philos[3]; 
+	t_philosopher philo = philos[0]; 
 	print_action(philo.index, LFORK);
 	print_action(philo.index, RFORK);
 	print_action(philo.index, EAT);
