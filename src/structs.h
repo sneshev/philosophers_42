@@ -35,7 +35,7 @@ typedef struct s_config
 typedef struct s_philosopher
 {
 	size_t  		index;
-	e_state 		state;
+	e_state 		state; // add mutex ! ! !
 	t_config		config;
 	pthread_mutex_t	*fork[2];
 	long			meal_last;

@@ -21,6 +21,9 @@ void	destroy_forks(pthread_mutex_t *forks, int amount);
 void	*even_routine(void *data);
 void	*odd_routine(void *data);
 void	print_action(size_t index, e_action act);
+void	eat(t_philosopher *philo);
+void	sleeep(t_philosopher *philo);
+bool	has_starved(t_philosopher *philo);
 
 // time
 long	get_elapsed_ms(void);
