@@ -25,7 +25,7 @@ void	destroy_forks(pthread_mutex_t *forks, int amount)
 {
 	if (!forks)
 		return ;
-	while (--amount >= 0)
+	while (amount-- > 0)
 		pthread_mutex_destroy(&forks[amount]);
 	free(forks);
 }

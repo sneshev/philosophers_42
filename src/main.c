@@ -17,12 +17,21 @@ int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 	return (1);
 }
 
+void	join_free_threads(pthread_t *threads, int count)
+{
+	if (!threads)
+		return ;
+	while (count-- > 0)
+		pthread_join(threads[count], NULL);
+	free(threads);
+}
+
 void	end_program(t_dinner dinner, pthread_mutex_t *forks, t_philosopher *philos, pthread_t *threads)
 {
-	(void)threads;
-	// join_threads(threads);
 	destroy_forks(forks, dinner.config.philos_count);
-	free(philos);
+	join_free_threads(threads, dinner.config.philos_count);
+	if (philos)
+		free(philos);
 }
 
 // int main()
