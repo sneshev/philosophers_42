@@ -6,13 +6,14 @@ bool	has_starved(t_philosopher *philo)
 	long	last_meal;
 	long	time_to_die;
 
-	elapsed_ms = get_elapsed_ms;
+	elapsed_ms = get_elapsed_ms();
 	last_meal = philo->meal_last;
 	time_to_die = philo->config.time_to_die;
 	if (elapsed_ms - last_meal < time_to_die)
 		return (false);
 	else
 	{
+		print_action(philo->index, DIE);
 		philo->state = DEAD; // add mutex ! ! !
 		return (true);
 	}

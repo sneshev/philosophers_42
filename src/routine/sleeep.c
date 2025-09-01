@@ -7,15 +7,15 @@ void	sleeep(t_philosopher *philo)
 
 	if (has_starved(philo))
 		return ;
+	print_action(philo->index, SLEEP);
 	start_ms = get_elapsed_ms();
 	time_to_sleep = philo->config.time_to_sleep;
 	while (get_elapsed_ms() < start_ms + time_to_sleep)
 	{
 		usleep(500);
 		if (has_starved(philo))
-			return ; // exit thread ? ? ?
+			pthread_exit(NULL);
 	}
-	
 }
 
 /*
