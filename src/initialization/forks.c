@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../philosophers.h"
 
 // malloc for and init fork mutexes
 int	create_forks(pthread_mutex_t **forks_ptr, int amount)

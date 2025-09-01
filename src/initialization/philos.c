@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../philosophers.h"
 
 int init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner)
 {

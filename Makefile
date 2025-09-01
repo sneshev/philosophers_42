@@ -10,16 +10,16 @@ CFLAGS := -Wall -Werror -Wextra
 
 RM := rm -rf
 
-all: obj $(NAME)
+all: $(NAME)
 
-obj:
-	mkdir -p obj
+$(shell mkdir -p $(dir $(OBJS)))
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 obj/%.o: src/%.c
-	$(CC) -c $(CFLAGS) -o $@ $^
+	@mkdir -p $(dir $@)
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
 	$(RM) $(OBJS)
