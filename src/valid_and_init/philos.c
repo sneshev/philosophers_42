@@ -12,9 +12,9 @@ int init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner)
 	while (i < dinner.config.philos_count)
 	{
 		if (i % 2)
-			pthread_create(&threads[0][i], NULL, even_routine, NULL);
+			pthread_create(&threads[0][i], NULL, odd_routine, &philos[i]);
 		else
-			pthread_create(&threads[0][i], NULL, odd_routine, NULL);
+			pthread_create(&threads[0][i], NULL, even_routine, &philos[i]);
 		i++;
 	}
 	return (1);

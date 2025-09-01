@@ -1,16 +1,19 @@
 #include "../philosophers.h"
 
-void	*even_routine(void *data)
+void	*even_routine(void *philo_ptr)
 {
-	(void)data;
-	printf("even_routine\n");
+	t_philosopher	philo;
+
+	philo = *(t_philosopher *)philo_ptr;
+	printf("philo %ld : even_routine\n",	 philo.index);
 	return (NULL);
 }
 
-void	*odd_routine(void *data)
+void	*odd_routine(void *philo_ptr)
 {
-	(void)data;
-	printf("odd_routine\n");
+	t_philosopher	philo;
+
+	philo = *(t_philosopher *)philo_ptr;
+	printf("philo %ld : odd_routine\n", philo.index);
 	return (NULL);
 }
-
