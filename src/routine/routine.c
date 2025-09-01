@@ -41,3 +41,5 @@ void	*odd_routine(void *philo_ptr)
 	printf("philo %ld : odd_routine\n", philo.index);
 	return (NULL);
 }
+
+// make it one routine and on the eat.c make it split into eat()->eat_odd() and eat()->eat_even()
