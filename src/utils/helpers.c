@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../philosophers.h"
 
 void	print_dinner(t_dinner dinner)
 {

@@ -49,19 +49,11 @@ int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner d
 	return (1);
 }
 
-void	print_action(size_t index, e_action act)
+void	join_free_threads(pthread_t *threads, int count)
 {
-	print_elapsed_ms();
-	printf(" %zu ", index);
-	if (act == LFORK || act == RFORK)
-		printf("has taken a fork");
-	else if (act == DIE)
-		printf("died");
-	else if (act == EAT)
-		printf("is eating");
-	else if (act == SLEEP)
-		printf("is sleeping");
-	else if (act == THINK)
-		printf("is thinking");
-	printf("\n");
+	if (!threads)
+		return ;
+	while (count-- > 0)
+		pthread_join(threads[count], NULL);
+	free(threads);
 }

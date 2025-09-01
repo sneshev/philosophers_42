@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../philosophers.h"
 
 void	positive_int_message(char *arg_name);
 void	explain_message();
