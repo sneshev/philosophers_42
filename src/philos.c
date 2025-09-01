@@ -1,5 +1,25 @@
 #include "philosophers.h"
 
+int init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner)
+{
+	(void)philos;
+	int	i;
+
+	*threads = malloc(dinner.config.philos_count * sizeof(pthread_t));
+	if (!threads)
+		return (-1);
+	i = 0;
+	while (i < dinner.config.philos_count)
+	{
+		if (i % 2)
+			pthread_create(&threads[0][i], NULL, even_routine, NULL);
+		else
+			pthread_create(&threads[0][i], NULL, odd_routine, NULL);
+		i++;
+	}
+	return (1);
+}
+
 int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner dinner)
 {
 	t_philosopher	*philos;

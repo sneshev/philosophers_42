@@ -9,15 +9,23 @@
 # include <sys/time.h>
 
 bool	is_valid_input(int argc, char *argv[]);
+
+// creation and initialization
+int		create_forks(pthread_mutex_t **forks_ptr, int amount);
+int		create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner dinner);
+int		init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner);
+
+
+// routine
+void	*even_routine(void *data);
+void	*odd_routine(void *data);
 void	print_action(size_t index, e_action act);
 
+
+
+
 // forks
-int		create_forks(pthread_mutex_t **forks_ptr, int amount);
 void	destroy_forks(pthread_mutex_t *forks, int amount);
-
-// philos
-int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner dinner);
-
 
 // time
 long	get_elapsed_ms(void);

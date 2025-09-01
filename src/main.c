@@ -17,10 +17,19 @@ int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 	return (1);
 }
 
+void	end_program(t_dinner dinner, pthread_mutex_t *forks, t_philosopher *philos, pthread_t *threads)
+{
+	(void)threads;
+	// join_threads(threads);
+	destroy_forks(forks, dinner.config.philos_count);
+	free(philos);
+}
+
 // int main()
 int	main(int argc, char *argv[])
 {
 	pthread_mutex_t	*forks;
+	pthread_t		*threads;
 	t_philosopher	*philos;
 	t_dinner		dinner;
 	t_config		config;
@@ -42,22 +51,20 @@ int	main(int argc, char *argv[])
 		return (1); // dont have to free_dinner() yet
 	if (create_philos(&philos, forks, dinner) == -1)
 		return (destroy_forks(forks, config.philos_count), 1);
-	//...
+	if (init_threads(&threads, philos, dinner) == -1)
+		return (/*free stff*/ 1);
 
-	print_philos(philos);
-	
+	// print_philos(philos);
 	ft_sleep(619, MILLISEC);
+	// t_philosopher philo = philos[0]; 
+	// print_action(philo.index, LFORK);
+	// print_action(philo.index, RFORK);
+	// print_action(philo.index, EAT);
+	// print_action(philo.index, SLEEP);
+	// print_action(philo.index, THINK);
+	// print_action(philo.index, DIE);
 
-	t_philosopher philo = philos[0]; 
-	print_action(philo.index, LFORK);
-	print_action(philo.index, RFORK);
-	print_action(philo.index, EAT);
-	print_action(philo.index, SLEEP);
-	print_action(philo.index, THINK);
-	print_action(philo.index, DIE);
-
-	destroy_forks(forks, config.philos_count);
-	free(philos);
+	end_program(dinner, forks, philos, threads);
 }
 
 /*
