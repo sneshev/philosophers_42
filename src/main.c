@@ -50,9 +50,9 @@ int	main(int argc, char *argv[])
 	if (create_forks(&forks, config.philos_count) == -1)
 		return (1); // dont have to free_dinner() yet
 	if (create_philos(&philos, forks, dinner) == -1)
-		return (destroy_forks(forks, config.philos_count), 1);
+		return (end_program(dinner, forks, NULL, NULL), 1);
 	if (init_threads(&threads, philos, dinner) == -1)
-		return (/*free stff*/ 1);
+		return (end_program(dinner, forks, philos, NULL), 1);
 
 	// print_philos(philos);
 	ft_sleep(619, MILLISEC);

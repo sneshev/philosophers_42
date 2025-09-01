@@ -17,7 +17,6 @@ int		init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner);
 void	join_free_threads(pthread_t *threads, int count);
 void	destroy_forks(pthread_mutex_t *forks, int amount);
 
-
 // routine
 void	*even_routine(void *data);
 void	*odd_routine(void *data);

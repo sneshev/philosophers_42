@@ -22,7 +22,7 @@ void	print_philo(t_philosopher philo)
 	printf("fork[LEFT]: %p\n", philo.fork[LEFT]);
 	printf("fork[RIGHT]: %p\n", philo.fork[RIGHT]);
 	printf("meal last: %ld\n", philo.meal_last);
-	printf("meals eaten: %ld\n", philo.meals_eaten);
+	printf("meals eaten: %d\n", philo.meals_eaten);
 	printf("\n");
 	printf("config:\n");
 	if (philo.config.max_meals != -1)
