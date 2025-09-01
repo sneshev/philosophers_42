@@ -6,7 +6,7 @@ void	sleeep(t_philosopher *philo)
 	long	time_to_sleep;
 
 	if (has_starved(philo))
-		return ;
+		pthread_exit(NULL);
 	print_action(philo->index, SLEEP);
 	start_ms = get_elapsed_ms();
 	time_to_sleep = philo->config.time_to_sleep;

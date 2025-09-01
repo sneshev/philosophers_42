@@ -18,8 +18,7 @@ void	join_free_threads(pthread_t *threads, int count);
 void	destroy_forks(pthread_mutex_t *forks, int amount);
 
 // routine
-void	*even_routine(void *data);
-void	*odd_routine(void *data);
+void	*routine(void *philo_ptr);
 void	print_action(size_t index, e_action act);
 void	eat(t_philosopher *philo);
 void	sleeep(t_philosopher *philo);

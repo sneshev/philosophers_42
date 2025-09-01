@@ -1,5 +1,9 @@
 #include "../philosophers.h"
 
+/*
+	only checks if the specific philosopher has died
+	must check if any philosopher has died ! !
+*/
 bool	has_starved(t_philosopher *philo)
 {
 	long	elapsed_ms;
@@ -19,7 +23,7 @@ bool	has_starved(t_philosopher *philo)
 	}
 }
 
-void	*even_routine(void *philo_ptr)
+void	*routine(void *philo_ptr)
 {
 	t_philosopher	philo;
 
@@ -30,15 +34,6 @@ void	*even_routine(void *philo_ptr)
 		sleeep(&philo);
 		print_action(philo.index, THINK);
 	}
-	return (NULL);
-}
-
-void	*odd_routine(void *philo_ptr)
-{
-	t_philosopher	philo;
-
-	philo = *(t_philosopher *)philo_ptr;
-	printf("philo %ld : odd_routine\n", philo.index);
 	return (NULL);
 }
 
