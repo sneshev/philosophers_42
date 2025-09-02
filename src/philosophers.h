@@ -1,6 +1,17 @@
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
+
+/*
+	CAN NOT USE TRYLOCK 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
+
+
+
+	CAN NOT USE PTHREAD_EXIT EITHER...... 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
+
+*/
+
+
 # include "structs.h"
 # include <unistd.h>
 # include <stdio.h>

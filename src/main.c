@@ -1,5 +1,16 @@
 #include "philosophers.h"
 
+
+/*
+	CAN NOT USE TRYLOCK 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
+
+
+
+	CAN NOT USE PTHREAD_EXIT EITHER...... 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
+
+*/
+
+
 // init dinner struct and static var function
 int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 {
