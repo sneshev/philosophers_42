@@ -55,3 +55,10 @@ void	*routine(void *philo_ptr)
 	}
 	return (NULL);
 }
+
+
+/*
+	odd number of philosophers has error!
+
+	last two philos eat at same time
+*/
