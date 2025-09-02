@@ -1,5 +1,18 @@
 #include "../philosophers.h"
 
+bool	is_full(t_philosopher philo)
+{
+	if (philo.meals_eaten == philo.config.max_meals)
+		return (true);
+	return (false);
+}
+
+bool	sbdy_died(t_philosopher philo)
+{
+	(void)philo;
+	return (false);
+}
+
 void	print_action(size_t index, e_action act)
 {
 	static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;

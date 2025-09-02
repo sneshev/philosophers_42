@@ -21,7 +21,7 @@ void	print_philo(t_philosopher philo)
 	printf("philo[%ld]: \n", philo.index);
 	printf("fork[LEFT]: %p\n", philo.fork[LEFT]);
 	printf("fork[RIGHT]: %p\n", philo.fork[RIGHT]);
-	printf("meal last: %ld\n", philo.meal_last);
+	printf("meal last: %ld\n", philo.meal_last.val);
 	printf("meals eaten: %d\n", philo.meals_eaten);
 	printf("\n");
 	printf("config:\n");

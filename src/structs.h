@@ -15,6 +15,12 @@ typedef enum s_state
 	DEAD
 }	e_state;
 
+typedef struct s_state_struct
+{
+	pthread_mutex_t lock;
+	e_state 		val; 
+}	t_state;
+
 typedef enum s_time
 {
 	SEC,
@@ -32,13 +38,19 @@ typedef struct s_config
 	int		max_meals;
 }	t_config;
 
+typedef struct s_meal_last
+{
+	pthread_mutex_t lock;
+	long			val;
+}	t_meal_last;
+
 typedef struct s_philosopher
 {
 	size_t  		index;
-	e_state 		state; // add mutex ! ! !
+	t_state			state;
 	t_config		config;
 	pthread_mutex_t	*fork[2];
-	long			meal_last;
+	t_meal_last		meal_last;
 	int				meals_eaten;
 }	t_philosopher;
 

@@ -17,6 +17,17 @@ int init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner)
 	return (1);
 }
 
+void	init_philo(t_philosopher *philo, int i, t_config config)
+{
+	philo->index = i;
+	pthread_mutex_init(&philo->state.lock, NULL);
+	philo->state.val = ALIVE;
+	philo->config = config;
+	pthread_mutex_init(&philo->meal_last.lock, NULL);
+	philo->meal_last.val = 0;
+	philo->meals_eaten = 0;
+}
+
 int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner dinner)
 {
 	t_philosopher	*philos;
@@ -31,16 +42,12 @@ int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner d
 	i = 0;
 	while (i < philos_count)
 	{
-		philos[i].index = i;
-		philos[i].state = ALIVE;
-		philos[i].config = dinner.config;
+		init_philo(&philos[i], i, dinner.config);
 		philos[i].fork[LEFT] = &forks[i];
 		if (philos_count > 1)
 			philos[i].fork[RIGHT] = &forks[(i + 1) % philos_count];
 		else
 			philos[i].fork[RIGHT] = NULL;
-		philos[i].meal_last = dinner.config.start_ms;
-		philos[i].meals_eaten = 0;
 		i++;
 	}
 	return (1);
