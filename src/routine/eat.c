@@ -1,17 +1,23 @@
 #include "../philosophers.h"
 
-static int	take_fork(t_philosopher *philo, pthread_mutex_t *fork)
+static void	take_fork(t_philosopher *philo, int side, bool fork_taken)
 {
-	if (!fork)
-		return (-2);
-	while (pthread_mutex_trylock(fork) != 0)
+	pthread_mutex_t **fork;
+
+	fork = philo->fork;
+	while (pthread_mutex_trylock(fork[side]) != 0)
 	{
 		usleep(500);
 		if (has_starved(philo) || sbdy_died(philo))
-			return (-1);
+		{
+			if (fork_taken && side == LEFT)
+				pthread_mutex_unlock(fork[RIGHT]);
+			else if (fork_taken && side == RIGHT)
+				pthread_mutex_unlock(fork[LEFT]);
+			pthread_exit(NULL);
+		}
 	}
 	print_action(philo->index, FORK);
-	return (1);
 }
 
 static void	nom_nom_nom(t_philosopher *philo)
@@ -34,13 +40,8 @@ static void	nom_nom_nom(t_philosopher *philo)
 
 static void	eat_odd(t_philosopher *philo)
 {
-	if (take_fork(philo, philo->fork[LEFT]) == -1)
-		pthread_exit(NULL);
-	if (take_fork(philo, philo->fork[RIGHT]) == -1)
-	{
-		pthread_mutex_unlock(philo->fork[LEFT]);
-		pthread_exit(NULL);
-	}	
+	take_fork(philo, LEFT, 0);
+	take_fork(philo, RIGHT, 1);
 	nom_nom_nom(philo);
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->fork[LEFT]);
@@ -49,13 +50,8 @@ static void	eat_odd(t_philosopher *philo)
 
 static void	eat_even(t_philosopher *philo)
 {
-	if (take_fork(philo, philo->fork[RIGHT]) == -1)
-		pthread_exit(NULL);
-	if (take_fork(philo, philo->fork[LEFT]) == -1)
-	{
-		pthread_mutex_unlock(philo->fork[RIGHT]);
-		pthread_exit(NULL);
-	}
+	take_fork(philo, RIGHT, 0);
+	take_fork(philo, LEFT, 1);
 	nom_nom_nom(philo);
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->fork[RIGHT]);
