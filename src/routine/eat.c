@@ -36,6 +36,7 @@ static void	nom_nom_nom(t_philosopher *philo)
 		if (has_starved(philo) || sbdy_died(philo))
 			return ; // to unlock mutexes
 	}
+	philo->meals_eaten++;
 }
 
 static void	eat_odd(t_philosopher *philo)
@@ -43,7 +44,6 @@ static void	eat_odd(t_philosopher *philo)
 	take_fork(philo, LEFT, 0);
 	take_fork(philo, RIGHT, 1);
 	nom_nom_nom(philo);
-	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->fork[LEFT]);
 	pthread_mutex_unlock(philo->fork[RIGHT]);
 }
@@ -53,7 +53,6 @@ static void	eat_even(t_philosopher *philo)
 	take_fork(philo, RIGHT, 0);
 	take_fork(philo, LEFT, 1);
 	nom_nom_nom(philo);
-	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->fork[RIGHT]);
 	pthread_mutex_unlock(philo->fork[LEFT]);
 }
