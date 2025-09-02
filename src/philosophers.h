@@ -20,6 +20,7 @@ void	destroy_forks(pthread_mutex_t *forks, int amount);
 // routine
 void	*routine(void *philo_ptr);
 void	print_action(size_t index, e_action act);
+void	perform_action(t_philosopher *philo, long ms);
 void	eat(t_philosopher *philo);
 void	sleeep(t_philosopher *philo);
 bool	has_starved(t_philosopher *philo);

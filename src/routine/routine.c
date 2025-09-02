@@ -25,12 +25,25 @@ bool	has_starved(t_philosopher *philo)
 	}
 }
 
+void	perform_action(t_philosopher *philo, long ms_to_pass)
+{
+	long	finish_time;
+
+	finish_time = get_elapsed_ms() + ms_to_pass;
+	while (get_elapsed_ms() < finish_time)
+	{
+		usleep(500);
+		if (has_starved(philo) || sbdy_died(*philo))
+			return ;
+	}
+}
+
 void	*routine(void *philo_ptr)
 {
 	t_philosopher	philo;
 
 	philo = *(t_philosopher *)philo_ptr;
-	while (!sbdy_died(philo))
+	while (philo.state.val == ALIVE && !sbdy_died(philo))
 	{
 		eat(&philo);
 		if (philo.state.val == DEAD || is_full(&philo) || sbdy_died(philo))
