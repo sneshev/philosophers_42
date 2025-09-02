@@ -23,6 +23,12 @@ bool	has_starved(t_philosopher *philo)
 	}
 }
 
+bool	sbdy_died(t_philosopher *philo)
+{
+	(void)philo;
+	return (false);
+}
+
 void	*routine(void *philo_ptr)
 {
 	t_philosopher	philo;

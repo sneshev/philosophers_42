@@ -49,8 +49,7 @@ typedef struct s_dinner
 
 typedef enum s_action
 {
-	LFORK,
-	RFORK,
+	FORK,
 	EAT,
 	SLEEP,
 	THINK,

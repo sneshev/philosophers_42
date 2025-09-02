@@ -4,7 +4,7 @@ void	print_action(size_t index, e_action act)
 {
 	print_elapsed_ms();
 	printf(" %zu ", index);
-	if (act == LFORK || act == RFORK)
+	if (act == FORK)
 		printf("has taken a fork");
 	else if (act == DIE)
 		printf("died");
