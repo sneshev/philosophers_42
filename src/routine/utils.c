@@ -12,7 +12,7 @@ bool	is_full(t_philosopher *philo)
 	return (false);
 }
 
-bool	sbdy_died(t_philosopher philo)
+bool	sbdy_died(t_philosopher *philo)
 {
 	(void)philo;
 	return (false);

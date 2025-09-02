@@ -2,7 +2,7 @@
 
 void	sleeep(t_philosopher *philo)
 {
-	if (has_starved(philo) || sbdy_died(*philo))
+	if (has_starved(philo) || sbdy_died(philo))
 		return ;
 	print_action(philo->index, SLEEP);
 	perform_action(philo, philo->config.time_to_sleep);

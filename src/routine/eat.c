@@ -3,15 +3,19 @@
 static int	take_fork(t_philosopher *philo, int side)
 {
 	pthread_mutex_lock(philo->fork[side]);
-	if (has_starved(philo) || sbdy_died(*philo))
+	// printf("%ld locked %p\n", philo->index, philo->fork[side]);
+	if (has_starved(philo) || sbdy_died(philo))
+	{
+		pthread_mutex_unlock(philo->fork[side]);
 		return (-1);
+	}
 	print_action(philo->index, FORK);
 	return (1);
 }
 
 static void	nom_nom(t_philosopher *philo)
 {
-	if (!has_starved(philo) && !sbdy_died(*philo))
+	if (!has_starved(philo) && !sbdy_died(philo))
 	{
 		print_action(philo->index, EAT);
 		pthread_mutex_lock(&philo->meal_last.lock);
@@ -33,7 +37,9 @@ static void	do_eating_cycle(t_philosopher *philo, int side, int opposite)
 	}
 	nom_nom(philo);
 	pthread_mutex_unlock(philo->fork[LEFT]);
+	// printf("%ld unlocked %p\n", philo->index, philo->fork[LEFT]);
 	pthread_mutex_unlock(philo->fork[RIGHT]);
+	// printf("%ld unlocked %p\n", philo->index, philo->fork[RIGHT]);
 }
 
 void	eat(t_philosopher *philo)
@@ -41,7 +47,10 @@ void	eat(t_philosopher *philo)
 	if (philo->index % 2) // odd
 		do_eating_cycle(philo, LEFT, RIGHT);
 	else
+	{
+		usleep(2000);
 		do_eating_cycle(philo, RIGHT, LEFT);
+	}
 	if (philo->meals_eaten == philo->config.max_meals)
 	{
 		pthread_mutex_lock(&philo->state.lock);
