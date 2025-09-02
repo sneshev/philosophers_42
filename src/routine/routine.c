@@ -33,10 +33,10 @@ void	*routine(void *philo_ptr)
 	while (!sbdy_died(philo))
 	{
 		eat(&philo);
-		if (has_starved(&philo) || is_full(philo) || sbdy_died(philo))
+		if (philo.state.val == DEAD || is_full(&philo) || sbdy_died(philo))
 			return (NULL);
 		sleeep(&philo);
-		if (has_starved(&philo) || sbdy_died(philo))
+		if (philo.state.val == DEAD || sbdy_died(philo))
 			return (NULL);
 		print_action(philo.index, THINK);
 	}

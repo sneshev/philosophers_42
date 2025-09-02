@@ -1,9 +1,14 @@
 #include "../philosophers.h"
 
-bool	is_full(t_philosopher philo)
+bool	is_full(t_philosopher *philo)
 {
-	if (philo.meals_eaten == philo.config.max_meals)
+	if (philo->meals_eaten == philo->config.max_meals)
+	{
+		pthread_mutex_lock(&philo->state.lock);
+		philo->state.val = DONE;
+		pthread_mutex_unlock(&philo->state.lock);
 		return (true);
+	}
 	return (false);
 }
 

@@ -66,16 +66,9 @@ static void	eat_even(t_philosopher *philo)
 
 void	eat(t_philosopher *philo)
 {
+	printf("philo %ld is trying to eat\n", philo->index);
 	if (philo->index % 2) // odd
 		eat_odd(philo);
 	else
 		eat_even(philo);
-	if (has_starved(philo) || sbdy_died(*philo))
-		pthread_exit(NULL);
-	else if (philo->meals_eaten == philo->config.max_meals)
-	{
-		pthread_mutex_lock(&philo->state.lock);
-		philo->state.val = DONE;
-		pthread_mutex_unlock(&philo->state.lock);
-	}
 }
