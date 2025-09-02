@@ -1,16 +1,5 @@
 #include "philosophers.h"
 
-
-/*
-	CAN NOT USE TRYLOCK 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-
-
-	CAN NOT USE PTHREAD_EXIT EITHER...... 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-*/
-
-
 // init dinner struct and static var function
 int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 {
@@ -66,7 +55,7 @@ int	main(int argc, char *argv[])
 		return (end_program(dinner, forks, philos, NULL), 1);
 
 	// print_philos(philos);
-	ft_sleep(619, MILLISEC);
+	// ft_sleep(619, MILLISEC);
 	// t_philosopher philo = philos[0]; 
 	// print_action(philo.index, LFORK);
 	// print_action(philo.index, RFORK);

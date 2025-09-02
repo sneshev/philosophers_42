@@ -1,16 +1,5 @@
 #include "../philosophers.h"
 
-
-/*
-	CAN NOT USE TRYLOCK 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-
-
-	CAN NOT USE PTHREAD_EXIT EITHER...... 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-*/
-
-
 void	sleeep(t_philosopher *philo)
 {
 	long	start_ms;

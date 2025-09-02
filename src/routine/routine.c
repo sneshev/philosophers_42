@@ -1,16 +1,6 @@
 #include "../philosophers.h"
 
 /*
-	CAN NOT USE TRYLOCK 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-
-
-	CAN NOT USE PTHREAD_EXIT EITHER...... 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-*/
-
-
-/*
 	only checks if the specific philosopher has died
 	must check if any philosopher has died ! !
 */

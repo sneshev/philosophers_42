@@ -1,14 +1,5 @@
 #include "../philosophers.h"
 
-/*
-	CAN NOT USE TRYLOCK 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-
-
-	CAN NOT USE PTHREAD_EXIT EITHER...... 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
-
-*/
-
 static void	take_fork(t_philosopher *philo, int side, bool fork_taken)
 {
 	pthread_mutex_t **fork;
