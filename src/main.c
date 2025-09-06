@@ -19,8 +19,8 @@ int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 
 void	end_program(t_dinner dinner, pthread_mutex_t *forks, t_philosopher *philos, pthread_t *threads)
 {
-	destroy_forks(forks, dinner.config.philos_count);
 	join_free_threads(threads, dinner.config.philos_count);
+	destroy_forks(forks, dinner.config.philos_count);
 	if (philos)
 		free(philos);
 }
