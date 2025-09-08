@@ -51,7 +51,7 @@ void	*routine(void *philo_ptr)
 		sleeep(&philo);
 		if (philo.state.val == DEAD || sbdy_died(&philo))
 			return (NULL);
-		print_action(philo.index, THINK);
+		think(&philo);
 	}
 	return (NULL);
 }

@@ -23,6 +23,7 @@ void	print_action(size_t index, e_action act);
 void	perform_action(t_philosopher *philo, long ms);
 void	eat(t_philosopher *philo);
 void	sleeep(t_philosopher *philo);
+void	think(t_philosopher *philo);
 bool	has_starved(t_philosopher *philo);
 bool	sbdy_died(t_philosopher *philo);
 bool	is_full(t_philosopher *philo);
