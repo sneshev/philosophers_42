@@ -17,24 +17,25 @@ int init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner)
 	return (1);
 }
 
-void	init_philo(t_philosopher *philo, int i, t_config config)
+void	init_philo(t_philosopher *philo, int i, t_dinner *dinner)
 {
 	philo->index = i;
 	pthread_mutex_init(&philo->state.lock, NULL);
 	philo->state.val = ALIVE;
-	philo->config = config;
+	philo->config = dinner->config;
 	pthread_mutex_init(&philo->meal_last.lock, NULL);
 	philo->meal_last.val = 0;
 	philo->meals_eaten = 0;
+	philo->sbdy_died = &dinner->sbdy_died;
 }
 
-int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner dinner)
+int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner *dinner)
 {
 	t_philosopher	*philos;
 	int				philos_count;
 	int				i;
 
-	philos_count = dinner.config.philos_count;
+	philos_count = dinner->config.philos_count;
 	philos = malloc(philos_count * sizeof(t_philosopher));
 	if (!philos)
 		return (-1);
@@ -42,7 +43,7 @@ int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner d
 	i = 0;
 	while (i < philos_count)
 	{
-		init_philo(&philos[i], i, dinner.config);
+		init_philo(&philos[i], i, dinner);
 		philos[i].fork[LEFT] = &forks[i];
 		if (philos_count > 1)
 			philos[i].fork[RIGHT] = &forks[(i + 1) % philos_count];

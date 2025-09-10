@@ -44,12 +44,19 @@ typedef struct s_meal_last
 	long			val;
 }	t_meal_last;
 
+typedef struct s_bool_mutx
+{
+	pthread_mutex_t lock;
+	bool			val;
+}	t_bool_mutx;
+
 typedef struct s_philosopher
 {
 	size_t  		index;
 	t_state			state;
 	t_config		config;
 	pthread_mutex_t	*fork[2];
+	t_bool_mutx		*sbdy_died;
 	t_meal_last		meal_last;
 	int				meals_eaten;
 }	t_philosopher;
@@ -57,6 +64,7 @@ typedef struct s_philosopher
 typedef struct s_dinner
 {
 	t_config	config;
+	t_bool_mutx	sbdy_died;
 }	t_dinner;
 
 typedef enum s_action
