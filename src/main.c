@@ -6,7 +6,7 @@
 /*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:21:22 by stefuntu          #+#    #+#             */
-/*   Updated: 2025/09/10 20:45:02 by stefuntu         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:45:23 by stefuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	end_program(t_dinner *dinner, pthread_mutex_t *forks,
 	pthread_mutex_destroy(&dinner->sbdy_died.lock);
 }
 
-// int main()
 int	main(int argc, char *argv[])
 {
 	pthread_mutex_t	*forks;
