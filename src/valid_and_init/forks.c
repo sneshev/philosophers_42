@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   forks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:17:11 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:17:27 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
 // malloc for and init fork mutexes
 int	create_forks(pthread_mutex_t **forks_ptr, int amount)
 {
-	pthread_mutex_t *forks;
-	int i;
+	pthread_mutex_t	*forks;
+	int				i;
 
 	forks = malloc(amount * sizeof(pthread_mutex_t));
 	if (!forks)
-		return (-1); // dont have to free_dinner() yet
+		return (-1);
 	*forks_ptr = forks;
 	i = 0;
 	while (i < amount)

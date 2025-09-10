@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:21:22 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:21:55 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
 // init dinner struct and static var function
@@ -19,9 +31,10 @@ int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 	return (1);
 }
 
-void	end_program(t_dinner *dinner, pthread_mutex_t *forks, t_philosopher *philos, pthread_t *threads)
+void	end_program(t_dinner *dinner, pthread_mutex_t *forks,
+		t_philosopher *philos, pthread_t *threads)
 {
-	int i;
+	int	i;
 
 	if (threads)
 		join_free_threads(threads, dinner->config.philos_count);
@@ -49,14 +62,6 @@ int	main(int argc, char *argv[])
 	t_philosopher	*philos;
 	t_dinner		dinner;
 	t_config		config;
-	// int argc = 6;
-	// char *argv[argc];
-	// argv[0] = "./philosophers";
-	// argv[1] = "5";
-	// argv[2] = "500";
-	// argv[3] = "111";
-	// argv[4] = "222";
-	// argv[5] = "4";
 
 	if (!is_valid_input(argc, argv))
 		return (1);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   eat.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:20:03 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:20:12 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
 static int	take_fork(t_philosopher *philo, int side)
@@ -43,7 +55,7 @@ static void	do_eating_cycle(t_philosopher *philo, int side, int opposite)
 
 void	eat(t_philosopher *philo)
 {
-	if (philo->index % 2) // odd
+	if (philo->index % 2)
 		do_eating_cycle(philo, LEFT, RIGHT);
 	else
 		do_eating_cycle(philo, RIGHT, LEFT);

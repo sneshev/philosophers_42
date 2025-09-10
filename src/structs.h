@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:14:49 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:24:39 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
@@ -13,20 +25,20 @@ typedef enum s_state
 	ALIVE,
 	DONE,
 	DEAD
-}	e_state;
+}	t_state;
 
 typedef struct s_state_struct
 {
-	pthread_mutex_t lock;
-	e_state 		val; 
-}	t_state;
+	pthread_mutex_t	lock;
+	t_state			val;
+}	t_state_struct;
 
 typedef enum s_time
 {
 	SEC,
 	MILLISEC,
 	MICROSEC
-}	e_time;
+}	t_time;
 
 typedef struct s_config
 {
@@ -40,20 +52,20 @@ typedef struct s_config
 
 typedef struct s_meal_last
 {
-	pthread_mutex_t lock;
+	pthread_mutex_t	lock;
 	long			val;
 }	t_meal_last;
 
 typedef struct s_bool_mutx
 {
-	pthread_mutex_t lock;
+	pthread_mutex_t	lock;
 	bool			val;
 }	t_bool_mutx;
 
 typedef struct s_philosopher
 {
-	size_t  		index;
-	t_state			state;
+	size_t			index;
+	t_state_struct	state;
 	t_config		config;
 	pthread_mutex_t	*fork[2];
 	t_bool_mutx		*sbdy_died;
@@ -74,6 +86,6 @@ typedef enum s_action
 	SLEEP,
 	THINK,
 	DIE
-}	e_action;
+}	t_action;
 
 #endif

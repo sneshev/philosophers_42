@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:19:21 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:25:22 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
 static long	ft_gettime(void)
@@ -48,7 +60,7 @@ void	print_elapsed_ms(void)
 	printf("%lu", ms);
 }
 
-void	ft_sleep(long time_to_sleep, e_time type)
+void	ft_sleep(long time_to_sleep, t_time type)
 {
 	long	start;
 

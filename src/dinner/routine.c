@@ -1,9 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:21:00 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:21:14 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
-/*
-	only checks if the specific philosopher has died
-	must check if any philosopher has died ! !
-*/
 bool	has_starved(t_philosopher *philo)
 {
 	long	elapsed_ms;
@@ -55,10 +63,3 @@ void	*routine(void *philo_ptr)
 	}
 	return (NULL);
 }
-
-
-/*
-	odd number of philosophers has error!
-
-	last two philos eat at same time
-*/

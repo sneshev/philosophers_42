@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:20:41 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:20:54 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
 static bool	has_died(t_philosopher *philo)
@@ -16,11 +28,10 @@ static bool	has_died(t_philosopher *philo)
 	pthread_mutex_unlock(&philo->meal_last.lock);
 	return (result);
 }
-// 400 - 200
 
 static bool	philos_are_full(t_philosopher *philos, int philos_count)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < philos_count)
@@ -44,7 +55,7 @@ void	monitor(t_dinner *dinner, t_philosopher *philos)
 	while (1)
 	{
 		i = 0;
-		while(i < dinner->config.philos_count)
+		while (i < dinner->config.philos_count)
 		{
 			if (has_died(&philos[i]))
 			{

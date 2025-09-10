@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   think.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:20:28 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:20:28 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
 void	think(t_philosopher *philo)
@@ -12,10 +24,5 @@ void	think(t_philosopher *philo)
 	pthread_mutex_unlock(&philo->meal_last.lock);
 	print_action(philo->index, THINK);
 	to_think_ms = (ms_to_die - ms_since_last_meal) / 7;
-	// printf("(%ld)meal_last      : %ld\n", philo->index, philo->meal_last.val);
-	// printf("(%ld)elapsed ms     : %ld\n", philo->index, get_elapsed_ms());
-	// printf("(%ld)since last meal: %d\n", philo->index, ms_since_last_meal);
-	// printf("(%ld)to_die_ms    : %d\n", philo->index, ms_to_die);
-	// printf("(%ld)to_think_ms    : %d\n", philo->index, to_think_ms);
 	perform_action(philo, to_think_ms);
 }

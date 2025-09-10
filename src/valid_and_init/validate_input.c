@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_input.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:15:01 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:16:30 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
 void	positive_int_message(char *arg_name);
-void	explain_message();
+void	explain_message(void);
 
-size_t  ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
-	size_t  i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
@@ -13,12 +25,12 @@ size_t  ft_strlen(char *str)
 	return (i);
 }
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c < '0')
-			return (0);
+		return (0);
 	if (c > '9')
-			return (0);
+		return (0);
 	return (2048);
 }
 
@@ -39,8 +51,8 @@ bool	is_number(char *str)
 
 bool	is_positive_int(char *str)
 {
-	const char  *int_max = "2147483647";
-	int		 i;
+	const char	*int_max = "2147483647";
+	int			i;
 
 	if (!is_number(str))
 		return (false);
@@ -55,7 +67,7 @@ bool	is_positive_int(char *str)
 	i = 0;
 	if (*str > '2')
 		return (false);
-	while(str[i] == int_max[i])
+	while (str[i] == int_max[i])
 	{
 		i++;
 		if (str[i] > int_max[i])

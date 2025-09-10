@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philos.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 20:16:37 by stefuntu          #+#    #+#             */
+/*   Updated: 2025/09/10 20:17:03 by stefuntu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philosophers.h"
 
-int init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner)
+int	init_threads(pthread_t **threads, t_philosopher *philos, t_dinner dinner)
 {
-	(void)philos;
 	int	i;
 
 	*threads = malloc(dinner.config.philos_count * sizeof(pthread_t));
@@ -29,7 +40,8 @@ void	init_philo(t_philosopher *philo, int i, t_dinner *dinner)
 	philo->sbdy_died = &dinner->sbdy_died;
 }
 
-int	create_philos(t_philosopher **philos_ptr, pthread_mutex_t *forks, t_dinner *dinner)
+int	create_philos(t_philosopher **philos_ptr,
+		pthread_mutex_t *forks, t_dinner *dinner)
 {
 	t_philosopher	*philos;
 	int				philos_count;
