@@ -19,12 +19,24 @@ int	prepare_dinner(t_dinner *dinner, int argc, char *argv[])
 	return (1);
 }
 
-void	end_program(t_dinner dinner, pthread_mutex_t *forks, t_philosopher *philos, pthread_t *threads)
+void	end_program(t_dinner *dinner, pthread_mutex_t *forks, t_philosopher *philos, pthread_t *threads)
 {
-	join_free_threads(threads, dinner.config.philos_count);
-	destroy_forks(forks, dinner.config.philos_count);
+	int i;
+
+	join_free_threads(threads, dinner->config.philos_count);
+	i = 0;
 	if (philos)
+	{
+		while (i < dinner->config.philos_count)
+		{
+			pthread_mutex_destroy(&philos[i].state.lock);
+			pthread_mutex_destroy(&philos[i].meal_last.lock);
+			i++;
+		}
 		free(philos);
+	}
+	destroy_forks(forks, dinner->config.philos_count);
+	pthread_mutex_destroy(&dinner->sbdy_died.lock);
 }
 
 // int main()
@@ -50,13 +62,13 @@ int	main(int argc, char *argv[])
 		return (1);
 	config = dinner.config;
 	if (create_forks(&forks, config.philos_count) == -1)
-		return (1); // dont have to free_dinner() yet
+		return (end_program(&dinner, NULL, NULL, NULL), 1);
 	if (create_philos(&philos, forks, &dinner) == -1)
-		return (end_program(dinner, forks, NULL, NULL), 1);
+		return (end_program(&dinner, forks, NULL, NULL), 1);
 	if (init_threads(&threads, philos, dinner) == -1)
-		return (end_program(dinner, forks, philos, NULL), 1);
+		return (end_program(&dinner, forks, philos, NULL), 1);
 	monitor(&dinner, philos);
-	end_program(dinner, forks, philos, threads);
+	end_program(&dinner, forks, philos, threads);
 }
 
 /*
