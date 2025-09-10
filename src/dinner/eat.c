@@ -6,7 +6,7 @@
 /*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:20:03 by stefuntu          #+#    #+#             */
-/*   Updated: 2025/09/10 20:20:12 by stefuntu         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:41:22 by stefuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	take_fork(t_philosopher *philo, int side)
 {
 	if (sbdy_has_died(philo))
 		return (-1);
+	if (philo->fork[side] == NULL)
+		return (perform_action(philo, philo->config.time_to_die + 1), -1);
 	pthread_mutex_lock(philo->fork[side]);
 	if (sbdy_has_died(philo))
 	{
