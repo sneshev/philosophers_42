@@ -23,10 +23,11 @@ void	end_program(t_dinner *dinner, pthread_mutex_t *forks, t_philosopher *philos
 {
 	int i;
 
-	join_free_threads(threads, dinner->config.philos_count);
-	i = 0;
+	if (threads)
+		join_free_threads(threads, dinner->config.philos_count);
 	if (philos)
 	{
+		i = 0;
 		while (i < dinner->config.philos_count)
 		{
 			pthread_mutex_destroy(&philos[i].state.lock);
@@ -35,7 +36,8 @@ void	end_program(t_dinner *dinner, pthread_mutex_t *forks, t_philosopher *philos
 		}
 		free(philos);
 	}
-	destroy_forks(forks, dinner->config.philos_count);
+	if (forks)
+		destroy_forks(forks, dinner->config.philos_count);
 	pthread_mutex_destroy(&dinner->sbdy_died.lock);
 }
 
