@@ -26,7 +26,7 @@ void	eat(t_philosopher *philo);
 void	sleeep(t_philosopher *philo);
 void	think(t_philosopher *philo);
 bool	has_starved(t_philosopher *philo);
-bool	sbdy_died(t_philosopher *philo);
+bool	sbdy_has_died(t_philosopher *philo);
 bool	is_full(t_philosopher *philo);
 
 // time

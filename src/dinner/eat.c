@@ -2,11 +2,10 @@
 
 static int	take_fork(t_philosopher *philo, int side)
 {
-	if (has_starved(philo) || sbdy_died(philo))
+	if (sbdy_has_died(philo))
 		return (-1);
 	pthread_mutex_lock(philo->fork[side]);
-	// printf("%ld locked %p\n", philo->index, philo->fork[side]);
-	if (has_starved(philo) || sbdy_died(philo))
+	if (sbdy_has_died(philo))
 	{
 		pthread_mutex_unlock(philo->fork[side]);
 		return (-1);
@@ -17,7 +16,7 @@ static int	take_fork(t_philosopher *philo, int side)
 
 static void	nom_nom(t_philosopher *philo)
 {
-	if (!has_starved(philo) && !sbdy_died(philo))
+	if (!sbdy_has_died(philo))
 	{
 		print_action(philo->index, EAT);
 		pthread_mutex_lock(&philo->meal_last.lock);
@@ -39,9 +38,7 @@ static void	do_eating_cycle(t_philosopher *philo, int side, int opposite)
 	}
 	nom_nom(philo);
 	pthread_mutex_unlock(philo->fork[LEFT]);
-	// printf("%ld unlocked %p\n", philo->index, philo->fork[LEFT]);
 	pthread_mutex_unlock(philo->fork[RIGHT]);
-	// printf("%ld unlocked %p\n", philo->index, philo->fork[RIGHT]);
 }
 
 void	eat(t_philosopher *philo)

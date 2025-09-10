@@ -12,10 +12,17 @@ bool	is_full(t_philosopher *philo)
 	return (false);
 }
 
-bool	sbdy_died(t_philosopher *philo)
+bool	sbdy_has_died(t_philosopher *philo)
 {
-	(void)philo;
-	return (false);
+	bool	res;
+
+	pthread_mutex_lock(&philo->sbdy_died->lock);
+	if (philo->sbdy_died->val == true)
+		res = true;
+	else
+		res = false;
+	pthread_mutex_unlock(&philo->sbdy_died->lock);
+	return (res);
 }
 
 void	print_action(size_t index, e_action act)
