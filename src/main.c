@@ -6,7 +6,7 @@
 /*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:21:22 by stefuntu          #+#    #+#             */
-/*   Updated: 2025/09/10 20:21:55 by stefuntu         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:45:02 by stefuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,3 @@ int	main(int argc, char *argv[])
 	monitor(&dinner, philos);
 	end_program(&dinner, forks, philos, threads);
 }
-
-/*
-	.if there is one philo left fork and right fork is same
-
-*/
