@@ -7,9 +7,11 @@ void	think(t_philosopher *philo)
 	int	to_think_ms;
 
 	ms_to_die = philo->config.time_to_die;
+	pthread_mutex_lock(&philo->meal_last.lock);
 	ms_since_last_meal = get_elapsed_ms() - philo->meal_last.val;
+	pthread_mutex_unlock(&philo->meal_last.lock);
 	print_action(philo->index, THINK);
-	to_think_ms = (ms_to_die - ms_since_last_meal) / 2;
+	to_think_ms = (ms_to_die - ms_since_last_meal) / 7;
 	// printf("(%ld)meal_last      : %ld\n", philo->index, philo->meal_last.val);
 	// printf("(%ld)elapsed ms     : %ld\n", philo->index, get_elapsed_ms());
 	// printf("(%ld)since last meal: %d\n", philo->index, ms_since_last_meal);

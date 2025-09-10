@@ -40,18 +40,18 @@ void	perform_action(t_philosopher *philo, long ms_to_pass)
 
 void	*routine(void *philo_ptr)
 {
-	t_philosopher	philo;
+	t_philosopher	*philo;
 
-	philo = *(t_philosopher *)philo_ptr;
+	philo = (t_philosopher *)philo_ptr;
 	while (1)
 	{
-		eat(&philo);
-		if (is_full(&philo) || sbdy_has_died(&philo))
+		eat(philo);
+		if (is_full(philo) || sbdy_has_died(philo))
 			return (NULL);
-		sleeep(&philo);
-		if (sbdy_has_died(&philo))
+		sleeep(philo);
+		if (sbdy_has_died(philo))
 			return (NULL);
-		think(&philo);
+		think(philo);
 	}
 	return (NULL);
 }
