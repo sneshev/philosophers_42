@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sneshev <sneshev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:15:01 by stefuntu          #+#    #+#             */
-/*   Updated: 2025/09/10 20:16:30 by stefuntu         ###   ########.fr       */
+/*   Updated: 2025/09/12 21:15:41 by sneshev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ bool	is_positive_int(char *str)
 		str++;
 	while (*str == '0')
 		str++;
+	if (!*str)
+		return (false);
 	if (ft_strlen(str) < 10)
 		return (true);
 	else if (ft_strlen(str) > 10)
